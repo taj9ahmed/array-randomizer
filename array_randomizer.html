@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>title</h1>
+  <form action="">
+    <input type="text" name="" id="input">
+    <input type="button" onclick="array_randomizer()" value ="randomize array" >
+  </form>
+  <hr>
+  <div id="output">Output</div>
+  
+   <script>
+   
+   function array_randomizer() {
+   //Take input from user and convert it to array of numbers
+    // var input = prompt("enter input");
+    // input = input.split('');
+    var input = document.getElementById("input").value;
+    input = input.split('');
+    // console.log(input.length);
+    var length = input.length;
+    // for (let ndx = 0; ndx < length; ndx++) {
+    //     input[ndx] = Number( input[ndx] ) ;
+    // }
+    // console.log(length);
+    
+    // Generate random numbers to map the randomization of the input array
+    var arr = [];
+    
+    while(arr.length < length) {
+        var r = Math.floor( Math.random() * 10 ) ;
+        if( (arr.indexOf(r) === -1) && r < length ) {
+          arr.push(r);
+      }
+    }
+    // console.log(arr);
+    
+    // create a copy of the input array via slice() method
+    let copy_arr = input.slice();
+    // console.log(copy_arr);
+    
+    // re-assign array elements according to random array content as index
+    for ( let ndx = 0; ndx < length; ndx++) {
+      input[arr[ndx]] = copy_arr[ndx];
+    }
+    // console.log(input);
+    var  output = document.getElementById("output");
+    var p = document.createElement("P");
+    var textnode = document.createTextNode(input);
+    p.appendChild(textnode);
+    output.appendChild(p);
+    
+   }// end function array_randomizer
+
+ 
+
+   </script> 
+   
+   
+</body>
+</html>
